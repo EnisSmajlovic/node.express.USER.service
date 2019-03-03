@@ -58,7 +58,7 @@ class UserController {
                 value.password
             );
 
-            if(user === true) {
+            if(user === 'exists') {
                 return res.status(400).send('User is already registered');
             }
 
