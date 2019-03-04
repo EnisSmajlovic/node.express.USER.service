@@ -63,14 +63,3 @@ class UserService {
 }
 
 module.exports = UserService;
-
-/**
- * Console
- */
-
-const NewUserService = new UserService();
-const Create = NewUserService.Create('tsss@tsss.com', 'en', 'sm', '1234567');
-
-Create.then((result) => {
-    console.log(result);
-});
