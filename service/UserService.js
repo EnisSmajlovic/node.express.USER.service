@@ -38,7 +38,7 @@ class UserService {
         try {
             let user = await User.findOne({ email: email });
             if(user) {
-                return 'exists';
+                return true;
             }
 
             user = new User({
@@ -66,11 +66,12 @@ module.exports = UserService;
 
 /**
  * Console
- */
-
-const NewUserService = new UserService();
-const Create = NewUserService.Create('tsss@tsss.com', 'en', 'sm', '1234567');
-
-Create.then((result) => {
-    console.log(result);
-});
+ 
+ const NewUserService = new UserService();
+ const Create = NewUserService.Create('tsss@tsss.com', 'en', 'sm', '1234567');
+ 
+ Create.then((result) => {
+     console.log(result);
+    });
+    
+*/

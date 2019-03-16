@@ -219,7 +219,7 @@ describe('Controller', () => {
 
             beforeAll(async () => {
                 ServiceMock.Create.mockImplementation(() => {
-                    return 'exists';
+                    return true;
                 });
                 await Subject.Create(req, res);
             });

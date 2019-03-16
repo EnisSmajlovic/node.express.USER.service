@@ -1,4 +1,3 @@
-jest.mock('../model/UserModel');
 jest.mock('../model/UserModel', () => {
     const mock = {
         findOne : jest.fn(),
@@ -15,7 +14,6 @@ jest.mock('../model/UserModel', () => {
 
     return mock;
 });
-
 
 const UserModel = require('../model/UserModel'),
     UserService = require('../service/UserService'),
@@ -67,12 +65,21 @@ describe('Service', () => {
 
     describe('Create', () => {
         describe('When function Create is called', () => {
+            const args = {
+                email       :   'test@test.com',
+                givenName   :   'en',
+                familyName  :   'sm',
+                password    :   '$2b$10$yAvChulkMZi4X0WK7e.y/usTRFYA6/SeIem3vHdBPp9omb4XLTUoG'
+            };
+
+            let result;
+
             beforeAll(async () => {
-                await Subject.Create('t@t.com', 'en', 'sm', '1234567');
+                result = await Subject.Create(args);
             });
 
             it('Should return', () => {
-                expect(UserModel.save).toHaveBeenCalledWith('t@t.com', 'en', 'sm', '1234567');
+                expect(result).toBe(true);
             });
 
             afterAll(() => {
